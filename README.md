@@ -2,16 +2,40 @@
 
 Claude Code plugins for AWS development with specialized knowledge and MCP server integrations.
 
-## AWS CDK Plugin
+## Plugins
 
-AWS CDK development skill with integrated MCP servers for enhanced development experience.
+### 1. AWS CDK Plugin
+
+AWS CDK development skill with integrated MCP servers for infrastructure as code.
 
 **Features**:
 - AWS CDK best practices and patterns
-- Integrated AWS Documentation MCP server
-- Integrated AWS CDK MCP server
 - Pre-deployment validation script
 - Comprehensive CDK patterns reference
+
+**Integrated MCP Servers**:
+- AWS Documentation MCP (HTTP)
+- AWS CDK MCP (stdio)
+
+### 2. AWS Cost & Operations Plugin
+
+Cost optimization, monitoring, and operational excellence with 8 integrated MCP servers.
+
+**Features**:
+- Cost estimation and optimization
+- Monitoring and observability patterns
+- Security assessment and auditing
+- Operational best practices
+
+**Integrated MCP Servers**:
+- AWS Billing and Cost Management
+- AWS Pricing
+- AWS Cost Explorer
+- Amazon CloudWatch
+- CloudWatch Application Signals
+- AWS Managed Prometheus
+- AWS CloudTrail
+- Well-Architected Security Assessment Tool
 
 ## Installation
 
@@ -21,10 +45,11 @@ Add the marketplace to Claude Code:
 /plugin marketplace add zxkane/aws-skills
 ```
 
-Install the aws-cdk plugin:
+Install plugins individually:
 
 ```bash
 /plugin install aws-cdk@aws-skills
+/plugin install aws-cost-operations@aws-skills
 ```
 
 ## Core CDK Principles
@@ -64,21 +89,11 @@ cdk synth
 ./scripts/validate-stack.sh
 ```
 
-## MCP Servers
+## Usage Examples
 
-### AWS Documentation MCP Server
-- Access AWS documentation and knowledge base
-- Check service regional availability
-- Search and read documentation pages
+### CDK Development
 
-### AWS CDK MCP Server
-- CDK construct guidance
-- Best practice recommendations
-- Pattern suggestions
-
-## Usage
-
-Ask Claude to help with CDK development:
+Ask Claude to help with CDK:
 
 ```
 Create a CDK stack with a Lambda function that processes S3 events
@@ -91,25 +106,73 @@ Claude will:
 - Grant proper IAM permissions
 - Use MCP servers for latest AWS information
 
+### Cost Optimization
+
+Estimate costs before deployment:
+
+```
+Estimate the monthly cost of running 10 Lambda functions with 1M invocations each
+```
+
+Analyze current spending:
+
+```
+Show me my AWS costs for the last 30 days broken down by service
+```
+
+### Monitoring and Observability
+
+Set up monitoring:
+
+```
+Create CloudWatch alarms for my Lambda functions to alert on errors and high duration
+```
+
+Investigate issues:
+
+```
+Show me CloudWatch logs for my API Gateway errors in the last hour
+```
+
+### Security and Audit
+
+Audit activity:
+
+```
+Show me all IAM changes made in the last 7 days
+```
+
+Assess security:
+
+```
+Run a Well-Architected security assessment on my infrastructure
+```
+
 ## Structure
 
 ```
 .
 ├── .claude-plugin/
-│   └── marketplace.json          # Plugin configuration
+│   └── marketplace.json              # Plugin marketplace configuration
 ├── skills/
-│   └── aws-cdk-development/
+│   ├── aws-cdk-development/          # CDK development skill
+│   │   ├── SKILL.md
+│   │   ├── references/
+│   │   │   └── cdk-patterns.md
+│   │   └── scripts/
+│   │       └── validate-stack.sh
+│   └── aws-cost-operations/          # Cost & operations skill
 │       ├── SKILL.md
-│       ├── references/
-│       │   └── cdk-patterns.md   # Detailed patterns
-│       └── scripts/
-│           └── validate-stack.sh
+│       └── references/
+│           ├── operations-patterns.md
+│           └── cloudwatch-alarms.md
 └── README.md
 ```
 
 ## Resources
 
 - [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills)
+- [AWS MCP Servers](https://awslabs.github.io/mcp/)
 - [AWS CDK](https://aws.amazon.com/cdk/)
 - [MCP Protocol](https://modelcontextprotocol.io/)
 

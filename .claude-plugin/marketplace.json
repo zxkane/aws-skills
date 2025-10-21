@@ -43,6 +43,107 @@
           }
         }
       }
+    },
+    {
+      "name": "aws-cost-operations",
+      "description": "AWS cost optimization, monitoring, and operational excellence with integrated MCP servers for billing, cost analysis, observability, and security assessment",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kane Zhu",
+        "email": "me@kane.mx"
+      },
+      "homepage": "https://github.com/zxkane/aws-skills",
+      "repository": "https://github.com/zxkane/aws-skills",
+      "license": "MIT",
+      "keywords": ["aws", "cost", "billing", "monitoring", "cloudwatch", "operations", "observability"],
+      "category": "operations",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/aws-cost-operations"
+      ],
+      "mcpServers": {
+        "aws-billing-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-billing-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-pricing-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-pricing-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-cost-explorer-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-cost-explorer-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-cloudwatch-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-cloudwatch-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-cloudwatch-application-signals-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-cloudwatch-application-signals-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-managed-prometheus-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-managed-prometheus-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-cloudtrail-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-cloudtrail-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-well-architected-security-assessment-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-well-architected-security-assessment-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        }
+      }
     }
   ]
 }
