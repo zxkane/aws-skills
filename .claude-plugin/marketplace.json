@@ -67,7 +67,7 @@
           "type": "stdio",
           "command": "uvx",
           "args": [
-            "awslabs.aws-billing-mcp-server@latest"
+            "awslabs.billing-cost-management-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
@@ -87,7 +87,7 @@
           "type": "stdio",
           "command": "uvx",
           "args": [
-            "awslabs.aws-cost-explorer-mcp-server@latest"
+            "awslabs.cost-explorer-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
@@ -97,7 +97,7 @@
           "type": "stdio",
           "command": "uvx",
           "args": [
-            "awslabs.aws-cloudwatch-mcp-server@latest"
+            "awslabs.cloudwatch-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
@@ -107,17 +107,7 @@
           "type": "stdio",
           "command": "uvx",
           "args": [
-            "awslabs.aws-cloudwatch-application-signals-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
-        },
-        "aws-managed-prometheus-mcp-server": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.aws-managed-prometheus-mcp-server@latest"
+            "awslabs.cloudwatch-appsignals-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
@@ -127,7 +117,7 @@
           "type": "stdio",
           "command": "uvx",
           "args": [
-            "awslabs.aws-cloudtrail-mcp-server@latest"
+            "awslabs.cloudtrail-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
@@ -137,7 +127,7 @@
           "type": "stdio",
           "command": "uvx",
           "args": [
-            "awslabs.aws-well-architected-security-assessment-mcp-server@latest"
+            "awslabs.well-architected-security-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
