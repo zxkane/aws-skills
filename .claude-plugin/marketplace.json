@@ -134,6 +134,73 @@
           }
         }
       }
+    },
+    {
+      "name": "aws-serverless-eda",
+      "description": "AWS serverless and event-driven architecture best practices based on Well-Architected Framework with MCP servers for SAM, Lambda, Step Functions, and messaging",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kane Zhu",
+        "email": "me@kane.mx"
+      },
+      "homepage": "https://github.com/zxkane/aws-skills",
+      "repository": "https://github.com/zxkane/aws-skills",
+      "license": "MIT",
+      "keywords": ["aws", "serverless", "lambda", "event-driven", "eda", "step-functions", "eventbridge", "sqs", "sns"],
+      "category": "development",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/aws-serverless-eda"
+      ],
+      "mcpServers": {
+        "aws-documentation-mcp-server": {
+          "type": "http",
+          "url": "https://knowledge-mcp.global.api.aws"
+        },
+        "aws-serverless-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-serverless-mcp-server@latest",
+            "--allow-write",
+            "--allow-sensitive-data-access"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-lambda-tool-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.aws-lambda-tool-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-step-functions-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.stepfunctions-tool-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        },
+        "aws-sns-sqs-mcp-server": {
+          "type": "stdio",
+          "command": "uvx",
+          "args": [
+            "awslabs.amazon-sns-sqs-mcp-server@latest"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          }
+        }
+      }
     }
   ]
 }

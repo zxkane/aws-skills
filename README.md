@@ -19,7 +19,7 @@ AWS CDK development skill with integrated MCP servers for infrastructure as code
 
 ### 2. AWS Cost & Operations Plugin
 
-Cost optimization, monitoring, and operational excellence with 8 integrated MCP servers.
+Cost optimization, monitoring, and operational excellence with 7 integrated MCP servers.
 
 **Features**:
 - Cost estimation and optimization
@@ -33,9 +33,26 @@ Cost optimization, monitoring, and operational excellence with 8 integrated MCP 
 - AWS Cost Explorer
 - Amazon CloudWatch
 - CloudWatch Application Signals
-- AWS Managed Prometheus
 - AWS CloudTrail
 - Well-Architected Security Assessment Tool
+
+### 3. AWS Serverless & Event-Driven Architecture Plugin
+
+Serverless and event-driven architecture patterns based on Well-Architected Framework with 4 integrated MCP servers.
+
+**Features**:
+- Well-Architected serverless design principles
+- Event-driven architecture patterns
+- Orchestration with Step Functions
+- Saga patterns for distributed transactions
+- Event sourcing patterns
+
+**Integrated MCP Servers**:
+- AWS Documentation MCP (HTTP)
+- AWS Serverless MCP (SAM CLI)
+- AWS Lambda Tool MCP
+- AWS Step Functions MCP
+- Amazon SNS/SQS MCP
 
 ## Installation
 
@@ -50,6 +67,7 @@ Install plugins individually:
 ```bash
 /plugin install aws-cdk@aws-skills
 /plugin install aws-cost-operations@aws-skills
+/plugin install aws-serverless-eda@aws-skills
 ```
 
 ## Core CDK Principles
@@ -148,6 +166,26 @@ Assess security:
 Run a Well-Architected security assessment on my infrastructure
 ```
 
+### Serverless Development
+
+Build serverless applications:
+
+```
+Create a serverless API with Lambda and API Gateway for user management
+```
+
+Implement event-driven workflow:
+
+```
+Create an event-driven order processing system with EventBridge and Step Functions
+```
+
+Orchestrate complex workflows:
+
+```
+Implement a saga pattern for booking flights, hotels, and car rentals with compensation logic
+```
+
 ## Structure
 
 ```
@@ -161,11 +199,16 @@ Run a Well-Architected security assessment on my infrastructure
 │   │   │   └── cdk-patterns.md
 │   │   └── scripts/
 │   │       └── validate-stack.sh
-│   └── aws-cost-operations/          # Cost & operations skill
+│   ├── aws-cost-operations/          # Cost & operations skill
+│   │   ├── SKILL.md
+│   │   └── references/
+│   │       ├── operations-patterns.md
+│   │       └── cloudwatch-alarms.md
+│   └── aws-serverless-eda/           # Serverless & EDA skill
 │       ├── SKILL.md
 │       └── references/
-│           ├── operations-patterns.md
-│           └── cloudwatch-alarms.md
+│           ├── serverless-patterns.md
+│           └── eda-patterns.md
 └── README.md
 ```
 
@@ -179,7 +222,3 @@ Run a Well-Architected security assessment on my infrastructure
 ## License
 
 MIT License - see [LICENSE](LICENSE)
-
-## Author
-
-Kane Zhu ([@zxkane](https://github.com/zxkane))
