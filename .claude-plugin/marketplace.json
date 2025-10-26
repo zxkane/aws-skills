@@ -174,7 +174,7 @@
           "type": "stdio",
           "command": "uvx",
           "args": [
-            "awslabs.aws-lambda-tool-mcp-server@latest"
+            "awslabs.lambda-tool-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
