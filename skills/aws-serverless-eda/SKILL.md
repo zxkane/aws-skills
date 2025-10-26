@@ -1,6 +1,6 @@
 ---
 name: aws-serverless-eda
-description: This skill provides AWS serverless and event-driven architecture best practices based on Well-Architected Framework. Use when building serverless applications, microservices, or event-driven systems with Lambda, API Gateway, Step Functions, EventBridge, SQS, and SNS.
+description: AWS serverless and event-driven architecture expert based on Well-Architected Framework. Use when building serverless APIs, Lambda functions, REST APIs, microservices, or async workflows. Covers Lambda with TypeScript/Python, API Gateway (REST/HTTP), DynamoDB, Step Functions, EventBridge, SQS, SNS, and serverless patterns. Essential when user mentions serverless, Lambda, API Gateway, event-driven, async processing, queues, pub/sub, or wants to build scalable serverless applications with AWS best practices.
 ---
 
 # AWS Serverless & Event-Driven Architecture

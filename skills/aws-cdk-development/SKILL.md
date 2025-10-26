@@ -1,6 +1,6 @@
 ---
 name: aws-cdk-development
-description: This skill provides AWS CDK best practices, workflows, and patterns for building cloud infrastructure. Use this skill when working with AWS CDK constructs, stacks, or infrastructure as code projects.
+description: AWS Cloud Development Kit (CDK) expert for building cloud infrastructure with TypeScript/Python. Use when creating CDK stacks, defining CDK constructs, implementing infrastructure as code, or when the user mentions CDK, CloudFormation, IaC, cdk synth, cdk deploy, or wants to define AWS infrastructure programmatically. Covers CDK app structure, construct patterns, stack composition, and deployment workflows.
 ---
 
 # AWS CDK Development
