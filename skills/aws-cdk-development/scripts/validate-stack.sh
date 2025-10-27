@@ -2,8 +2,25 @@
 
 # AWS CDK Stack Validation Script
 #
-# This script performs comprehensive validation of CDK stacks before deployment.
+# This script performs meta-level validation of CDK stacks before deployment.
 # Run this as part of pre-commit checks to ensure infrastructure quality.
+#
+# Focus areas:
+# - CDK synthesis success validation
+# - CloudFormation template size and resource count checks
+# - Language detection and dependency verification
+# - Integration with cdk-nag (recommended for comprehensive best practice checks)
+#
+# Supports CDK projects in multiple languages:
+# - TypeScript/JavaScript (detects via package.json)
+# - Python (detects via requirements.txt or setup.py)
+# - Java (detects via pom.xml)
+# - C# (detects via .csproj files)
+# - Go (detects via go.mod)
+#
+# For comprehensive CDK best practice validation (IAM policies, security,
+# naming conventions, etc.), use cdk-nag: https://github.com/cdklabs/cdk-nag
+# cdk-nag provides suppression mechanisms and supports all CDK languages.
 
 set -e
 
@@ -52,13 +69,51 @@ fi
 
 success "AWS CDK CLI found"
 
-# Check for package.json
-if [ ! -f "${PROJECT_ROOT}/package.json" ]; then
-    error "package.json not found in project root"
-    exit 1
-fi
+# Detect CDK project language
+detect_language() {
+    if [ -f "${PROJECT_ROOT}/package.json" ]; then
+        echo "typescript"
+    elif [ -f "${PROJECT_ROOT}/requirements.txt" ] || [ -f "${PROJECT_ROOT}/setup.py" ]; then
+        echo "python"
+    elif [ -f "${PROJECT_ROOT}/pom.xml" ]; then
+        echo "java"
+    elif [ -f "${PROJECT_ROOT}/cdk.csproj" ] || find "${PROJECT_ROOT}" -name "*.csproj" 2>/dev/null | grep -q .; then
+        echo "csharp"
+    elif [ -f "${PROJECT_ROOT}/go.mod" ]; then
+        echo "go"
+    else
+        echo "unknown"
+    fi
+}
 
-success "package.json found"
+CDK_LANGUAGE=$(detect_language)
+
+case "$CDK_LANGUAGE" in
+    typescript)
+        info "Detected TypeScript/JavaScript CDK project"
+        success "package.json found"
+        ;;
+    python)
+        info "Detected Python CDK project"
+        success "requirements.txt or setup.py found"
+        ;;
+    java)
+        info "Detected Java CDK project"
+        success "pom.xml found"
+        ;;
+    csharp)
+        info "Detected C# CDK project"
+        success ".csproj file found"
+        ;;
+    go)
+        info "Detected Go CDK project"
+        success "go.mod found"
+        ;;
+    unknown)
+        warning "Could not detect CDK project language"
+        warning "Proceeding with generic validation only"
+        ;;
+esac
 
 echo ""
 info "Running CDK synthesis..."
@@ -74,49 +129,62 @@ else
 fi
 
 echo ""
-info "Checking for common issues..."
+info "Checking for cdk-nag integration..."
 
-# Check for hardcoded resource names (common anti-pattern)
-if grep -r "functionName:" "${PROJECT_ROOT}/lib" 2>/dev/null | grep -v "node_modules" | grep -q "."; then
-    warning "Found potential hardcoded Lambda function names (functionName:)"
-    warning "Consider letting CDK generate names automatically"
-fi
+# Check if cdk-nag is being used for comprehensive validation
+case "$CDK_LANGUAGE" in
+    typescript)
+        if grep -r "cdk-nag" "${PROJECT_ROOT}/package.json" 2>/dev/null | grep -q "."; then
+            success "cdk-nag found in package.json"
+        else
+            warning "cdk-nag not found - recommended for comprehensive CDK validation"
+            warning "Install with: npm install --save-dev cdk-nag"
+            warning "See: https://github.com/cdklabs/cdk-nag"
+        fi
+        ;;
+    python)
+        if grep -r "cdk-nag" "${PROJECT_ROOT}/requirements.txt" 2>/dev/null | grep -q "."; then
+            success "cdk-nag found in requirements.txt"
+        elif grep -r "cdk-nag" "${PROJECT_ROOT}/setup.py" 2>/dev/null | grep -q "."; then
+            success "cdk-nag found in setup.py"
+        else
+            warning "cdk-nag not found - recommended for comprehensive CDK validation"
+            warning "Install with: pip install cdk-nag"
+            warning "See: https://github.com/cdklabs/cdk-nag"
+        fi
+        ;;
+    java)
+        if grep -r "cdk-nag" "${PROJECT_ROOT}/pom.xml" 2>/dev/null | grep -q "."; then
+            success "cdk-nag found in pom.xml"
+        else
+            warning "cdk-nag not found - recommended for comprehensive CDK validation"
+            warning "See: https://github.com/cdklabs/cdk-nag"
+        fi
+        ;;
+    csharp)
+        if find "${PROJECT_ROOT}" -name "*.csproj" -exec grep -l "CdkNag" {} \; 2>/dev/null | grep -q "."; then
+            success "cdk-nag found in .csproj"
+        else
+            warning "cdk-nag not found - recommended for comprehensive CDK validation"
+            warning "See: https://github.com/cdklabs/cdk-nag"
+        fi
+        ;;
+    go)
+        if grep -r "cdk-nag-go" "${PROJECT_ROOT}/go.mod" 2>/dev/null | grep -q "."; then
+            success "cdk-nag-go found in go.mod"
+        else
+            warning "cdk-nag-go not found - recommended for comprehensive CDK validation"
+            warning "See: https://github.com/cdklabs/cdk-nag-go"
+        fi
+        ;;
+esac
 
-if grep -r "bucketName:" "${PROJECT_ROOT}/lib" 2>/dev/null | grep -v "node_modules" | grep -q "."; then
-    warning "Found potential hardcoded S3 bucket names (bucketName:)"
-    warning "Consider letting CDK generate names automatically"
-fi
+success "Integration checks completed"
 
-if grep -r "tableName:" "${PROJECT_ROOT}/lib" 2>/dev/null | grep -v "node_modules" | grep -q "."; then
-    warning "Found potential hardcoded DynamoDB table names (tableName:)"
-    warning "Consider letting CDK generate names automatically"
-fi
-
-# Check for overly broad IAM permissions
-if grep -r "actions: \['\*'\]" "${PROJECT_ROOT}/lib" 2>/dev/null | grep -v "node_modules" | grep -q "."; then
-    warning "Found overly broad IAM permissions (actions: ['*'])"
-    warning "Use grant methods for least privilege access"
-fi
-
-if grep -r "resources: \['\*'\]" "${PROJECT_ROOT}/lib" 2>/dev/null | grep -v "node_modules" | grep -q "."; then
-    warning "Found overly broad IAM resources (resources: ['*'])"
-    warning "Specify explicit resource ARNs when possible"
-fi
-
-# Check for L1 constructs (CfnXxx) which might indicate lower-level usage
-L1_COUNT=$(grep -r "new Cfn" "${PROJECT_ROOT}/lib" 2>/dev/null | grep -v "node_modules" | grep -v "CfnOutput" | wc -l || echo 0)
-if [ "$L1_COUNT" -gt 0 ]; then
-    warning "Found ${L1_COUNT} L1 (Cfn*) construct(s)"
-    warning "Consider using higher-level L2/L3 constructs when available"
-fi
-
-# Check if Lambda functions use proper constructs
-if grep -r "new lambda.Function" "${PROJECT_ROOT}/lib" 2>/dev/null | grep -v "node_modules" | grep -q "."; then
-    warning "Found lambda.Function usage"
-    warning "Consider using NodejsFunction or PythonFunction for automatic bundling"
-fi
-
-success "Common issue checks completed"
+echo ""
+info "💡 Note: This script focuses on template and meta-level validation."
+info "For comprehensive CDK best practice checks (IAM, security, naming, etc.),"
+info "use cdk-nag: https://github.com/cdklabs/cdk-nag"
 
 echo ""
 info "Checking synthesized templates..."

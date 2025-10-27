@@ -45,17 +45,18 @@ Use this skill when:
 
 ### Resource Naming
 
-**CRITICAL**: Do NOT explicitly specify resource names when they are optional in CDK constructs. This prevents conflicts when deploying multiple stacks in the same region and account.
+**CRITICAL**: Do NOT explicitly specify resource names when they are optional in CDK constructs.
 
-**Why**: Explicit resource names prevent:
-- Multiple deployments in the same region
-- Parallel stack deployments
-- Different environments (dev, staging, prod) in the same account
+**Why**: CDK-generated names enable:
+- **Reusable patterns**: Deploy the same construct/pattern multiple times without conflicts
+- **Parallel deployments**: Multiple stacks can deploy simultaneously in the same region
+- **Cleaner shared logic**: Patterns and shared code can be initialized multiple times without name collision
+- **Stack isolation**: Each stack gets uniquely identified resources automatically
 
 **Pattern**: Let CDK generate unique names automatically using CloudFormation's naming mechanism.
 
 ```typescript
-// ❌ BAD - Explicit naming prevents multiple deployments
+// ❌ BAD - Explicit naming prevents reusability and parallel deployments
 new lambda.Function(this, 'MyFunction', {
   functionName: 'my-lambda',  // Avoid this
   // ...
@@ -63,10 +64,12 @@ new lambda.Function(this, 'MyFunction', {
 
 // ✅ GOOD - Let CDK generate unique names
 new lambda.Function(this, 'MyFunction', {
-  // No functionName specified
+  // No functionName specified - CDK generates: StackName-MyFunctionXXXXXX
   // ...
 });
 ```
+
+**Security Note**: For different environments (dev, staging, prod), follow AWS Security Pillar best practices by using separate AWS accounts rather than relying on resource naming within a single account. Account-level isolation provides stronger security boundaries.
 
 ### Lambda Function Development
 
@@ -103,34 +106,72 @@ new PythonFunction(this, 'MyFunction', {
 
 ### Pre-Deployment Validation
 
-Before committing CDK code, run comprehensive checks:
+Use a **multi-layer validation strategy** for comprehensive CDK quality checks:
 
-1. **Build**: Ensure TypeScript compilation succeeds
+#### Layer 1: Real-Time IDE Feedback (Recommended)
+
+**For TypeScript/JavaScript projects**:
+
+Install [cdk-nag](https://github.com/cdklabs/cdk-nag) for synthesis-time validation:
+```bash
+npm install --save-dev cdk-nag
+```
+
+Add to your CDK app:
+```typescript
+import { Aspects } from 'aws-cdk-lib';
+import { AwsSolutionsChecks } from 'cdk-nag';
+
+const app = new App();
+Aspects.of(app).add(new AwsSolutionsChecks());
+```
+
+**Optional - VS Code users**: Install [CDK NAG Validator extension](https://marketplace.visualstudio.com/items?itemName=alphacrack.cdk-nag-validator) for faster feedback on file save.
+
+**For Python/Java/C#/Go projects**: cdk-nag is available in all CDK languages and provides the same synthesis-time validation.
+
+#### Layer 2: Synthesis-Time Validation (Required)
+
+1. **Synthesis with cdk-nag**: Validate stack with comprehensive rules
    ```bash
-   npm run build
+   cdk synth  # cdk-nag runs automatically via Aspects
    ```
 
-2. **Tests**: Run all unit and integration tests
-   ```bash
-   npm test
+2. **Suppress legitimate exceptions** with documented reasons:
+   ```typescript
+   import { NagSuppressions } from 'cdk-nag';
+
+   // Document WHY the exception is needed
+   NagSuppressions.addResourceSuppressions(resource, [
+     {
+       id: 'AwsSolutions-L1',
+       reason: 'Lambda@Edge requires specific runtime for CloudFront compatibility'
+     }
+   ]);
    ```
 
-3. **Linting**: Check code quality
+#### Layer 3: Pre-Commit Safety Net
+
+1. **Build**: Ensure compilation succeeds
    ```bash
-   npm run lint
+   npm run build  # or language-specific build command
    ```
 
-4. **Synthesis**: Validate CDK stack synthesis
+2. **Tests**: Run unit and integration tests
    ```bash
-   cdk synth
+   npm test  # or pytest, mvn test, etc.
    ```
 
-5. **Custom Validation**: Run the provided validation script
+3. **Validation Script**: Meta-level checks
    ```bash
    ./scripts/validate-stack.sh
    ```
 
-Use the validation script at `scripts/validate-stack.sh` for additional stack-specific checks.
+The validation script now focuses on:
+- Language detection
+- Template size and resource count analysis
+- Synthesis success verification
+- (Note: Detailed anti-pattern checks are handled by cdk-nag)
 
 ## Workflow Guidelines
 
