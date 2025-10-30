@@ -212,6 +212,12 @@ Implement a saga pattern for booking flights, hotels, and car rentals with compe
 └── README.md
 ```
 
+## MCP Server Names
+
+MCP server names use short identifiers to comply with Bedrock's 64-character tool name limit. The naming pattern is: `mcp__plugin_{plugin}_{server}__{tool}`
+
+Examples: `awsdocs` (AWS docs), `cdk` (CDK), `cw` (CloudWatch), `sfn` (Step Functions), `sam` (Serverless), etc.
+
 ## Resources
 
 - [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills)

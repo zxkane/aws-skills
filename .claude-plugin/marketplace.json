@@ -28,11 +28,11 @@
         "./skills/aws-cdk-development"
       ],
       "mcpServers": {
-        "aws-documentation-mcp-server": {
+        "awsdocs": {
           "type": "http",
           "url": "https://knowledge-mcp.global.api.aws"
         },
-        "cdk-mcp-server": {
+        "cdk": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -63,7 +63,7 @@
         "./skills/aws-cost-operations"
       ],
       "mcpServers": {
-        "aws-billing-mcp-server": {
+        "billing": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -73,7 +73,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-pricing-mcp-server": {
+        "pricing": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -83,7 +83,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-cost-explorer-mcp-server": {
+        "costexp": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -93,7 +93,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-cloudwatch-mcp-server": {
+        "cw": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -103,7 +103,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-cloudwatch-application-signals-mcp-server": {
+        "cwappsig": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -113,7 +113,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-cloudtrail-mcp-server": {
+        "ct": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -123,7 +123,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-well-architected-security-assessment-mcp-server": {
+        "wasec": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -154,11 +154,11 @@
         "./skills/aws-serverless-eda"
       ],
       "mcpServers": {
-        "aws-documentation-mcp-server": {
+        "awsdocs": {
           "type": "http",
           "url": "https://knowledge-mcp.global.api.aws"
         },
-        "aws-serverless-mcp-server": {
+        "sam": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -170,7 +170,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-lambda-tool-mcp-server": {
+        "lambda": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -180,7 +180,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-step-functions-mcp-server": {
+        "sfn": {
           "type": "stdio",
           "command": "uvx",
           "args": [
@@ -190,7 +190,7 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "aws-sns-sqs-mcp-server": {
+        "snssqs": {
           "type": "stdio",
           "command": "uvx",
           "args": [
