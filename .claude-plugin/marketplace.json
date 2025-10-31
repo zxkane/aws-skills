@@ -45,7 +45,7 @@
       }
     },
     {
-      "name": "aws-cost-operations",
+      "name": "aws-cost-ops",
       "description": "AWS cost optimization, monitoring, and operational excellence with integrated MCP servers for billing, cost analysis, observability, and security assessment",
       "version": "1.0.0",
       "author": {
