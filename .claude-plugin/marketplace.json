@@ -170,31 +170,11 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "lambda": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.lambda-tool-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
-        },
         "sfn": {
           "type": "stdio",
           "command": "uvx",
           "args": [
             "awslabs.stepfunctions-tool-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
-        },
-        "snssqs": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.amazon-sns-sqs-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
