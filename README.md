@@ -67,7 +67,7 @@ Install plugins individually:
 ```bash
 /plugin install aws-cdk@aws-skills
 /plugin install aws-cost-operations@aws-skills
-/plugin install aws-serverless-eda@aws-skills
+/plugin install serverless-eda@aws-skills
 ```
 
 ## Core CDK Principles

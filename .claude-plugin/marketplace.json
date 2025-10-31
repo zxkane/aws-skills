@@ -136,7 +136,7 @@
       }
     },
     {
-      "name": "aws-serverless-eda",
+      "name": "serverless-eda",
       "description": "AWS serverless and event-driven architecture best practices based on Well-Architected Framework with MCP servers for SAM, Lambda, Step Functions, and messaging",
       "version": "1.0.0",
       "author": {
@@ -154,7 +154,7 @@
         "./skills/aws-serverless-eda"
       ],
       "mcpServers": {
-        "awsdocs": {
+        "doc": {
           "type": "http",
           "url": "https://knowledge-mcp.global.api.aws"
         },
