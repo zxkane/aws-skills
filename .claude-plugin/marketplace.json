@@ -63,16 +63,6 @@
         "./skills/aws-cost-operations"
       ],
       "mcpServers": {
-        "billing": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.billing-cost-management-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
-        },
         "pricing": {
           "type": "stdio",
           "command": "uvx",
@@ -102,36 +92,6 @@
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
-        },
-        "cwappsig": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.cloudwatch-appsignals-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
-        },
-        "ct": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.cloudtrail-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
-        },
-        "wasec": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.well-architected-security-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
         }
       }
     },
@@ -157,28 +117,6 @@
         "doc": {
           "type": "http",
           "url": "https://knowledge-mcp.global.api.aws"
-        },
-        "sam": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.aws-serverless-mcp-server@latest",
-            "--allow-write",
-            "--allow-sensitive-data-access"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
-        },
-        "sfn": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.stepfunctions-tool-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
         }
       }
     }
