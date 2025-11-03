@@ -19,26 +19,21 @@ AWS CDK development skill with integrated MCP servers for infrastructure as code
 
 ### 2. AWS Cost & Operations Plugin
 
-Cost optimization, monitoring, and operational excellence with 7 integrated MCP servers.
+Cost optimization, monitoring, and operational excellence with 3 integrated MCP servers.
 
 **Features**:
 - Cost estimation and optimization
 - Monitoring and observability patterns
-- Security assessment and auditing
 - Operational best practices
 
 **Integrated MCP Servers**:
-- AWS Billing and Cost Management
 - AWS Pricing
 - AWS Cost Explorer
 - Amazon CloudWatch
-- CloudWatch Application Signals
-- AWS CloudTrail
-- Well-Architected Security Assessment Tool
 
 ### 3. AWS Serverless & Event-Driven Architecture Plugin
 
-Serverless and event-driven architecture patterns based on Well-Architected Framework with 4 integrated MCP servers.
+Serverless and event-driven architecture patterns based on Well-Architected Framework with 2 integrated MCP servers.
 
 **Features**:
 - Well-Architected serverless design principles
@@ -50,9 +45,6 @@ Serverless and event-driven architecture patterns based on Well-Architected Fram
 **Integrated MCP Servers**:
 - AWS Documentation MCP (HTTP)
 - AWS Serverless MCP (SAM CLI)
-- AWS Lambda Tool MCP
-- AWS Step Functions MCP
-- Amazon SNS/SQS MCP
 
 ## Installation
 
