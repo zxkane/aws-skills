@@ -5,8 +5,8 @@
     "email": "me@kane.mx"
   },
   "metadata": {
-    "description": "AWS development skills for Claude Code including CDK, Lambda, and documentation helpers",
-    "version": "1.0.0"
+    "description": "AWS development skills for Claude Code including CDK, serverless architecture, cost optimization, and Bedrock AgentCore for AI agent deployment",
+    "version": "2.0.0"
   },
   "plugins": [
     {
@@ -119,6 +119,25 @@
           "url": "https://knowledge-mcp.global.api.aws"
         }
       }
+    },
+    {
+      "name": "aws-agentic-ai",
+      "description": "AWS Bedrock AgentCore comprehensive expert for deploying and managing all AgentCore services including Gateway, Runtime, Memory, Identity, Code Interpreter, Browser, and Observability",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kane Zhu",
+        "email": "me@kane.mx"
+      },
+      "homepage": "https://github.com/zxkane/aws-skills",
+      "repository": "https://github.com/zxkane/aws-skills",
+      "license": "MIT",
+      "keywords": ["aws", "bedrock", "agentcore", "ai-agents", "mcp", "gateway", "runtime", "memory", "identity"],
+      "category": "development",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/aws-agentic-ai"
+      ]
     }
   ]
 }
