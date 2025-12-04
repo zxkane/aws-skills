@@ -7,19 +7,27 @@ description: AWS Cloud Development Kit (CDK) expert for building cloud infrastru
 
 This skill provides comprehensive guidance for developing AWS infrastructure using the Cloud Development Kit (CDK), with integrated MCP servers for accessing latest AWS knowledge and CDK utilities.
 
+## AWS Documentation Requirement
+
+**CRITICAL**: This skill requires AWS MCP tools for accurate, up-to-date AWS information.
+
+### Before Answering AWS Questions
+
+1. **Always verify** using AWS MCP tools (if available):
+   - `mcp__aws-mcp__aws___search_documentation` or `mcp__*awsdocs*__aws___search_documentation` - Search AWS docs
+   - `mcp__aws-mcp__aws___read_documentation` or `mcp__*awsdocs*__aws___read_documentation` - Read specific pages
+   - `mcp__aws-mcp__aws___get_regional_availability` - Check service availability
+
+2. **If AWS MCP tools are unavailable**:
+   - Guide user to configure AWS MCP: See [AWS MCP Setup Guide](../../docs/aws-mcp-setup.md)
+   - Help determine which option fits their environment:
+     - Has uvx + AWS credentials → Full AWS MCP Server
+     - No Python/credentials → AWS Documentation MCP (no auth)
+   - If cannot determine → Ask user which option to use
+
 ## Integrated MCP Servers
 
-This skill includes two MCP servers automatically configured with the plugin:
-
-### AWS Documentation MCP Server
-**When to use**: Always verify AWS service information before implementation
-- Search AWS documentation for latest features and best practices
-- Check regional availability of AWS services
-- Verify service limits and quotas
-- Confirm API specifications and parameters
-- Access up-to-date AWS service information
-
-**Critical**: Use this server whenever AWS service features, configurations, or availability need verification.
+This skill includes the CDK MCP server automatically configured with the plugin:
 
 ### AWS CDK MCP Server
 **When to use**: For CDK-specific guidance and utilities

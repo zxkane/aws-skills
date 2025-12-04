@@ -28,10 +28,6 @@
         "./skills/aws-cdk-development"
       ],
       "mcpServers": {
-        "awsdocs": {
-          "type": "http",
-          "url": "https://knowledge-mcp.global.api.aws"
-        },
         "cdk": {
           "type": "stdio",
           "command": "uvx",
@@ -112,13 +108,7 @@
       "strict": false,
       "skills": [
         "./skills/aws-serverless-eda"
-      ],
-      "mcpServers": {
-        "doc": {
-          "type": "http",
-          "url": "https://knowledge-mcp.global.api.aws"
-        }
-      }
+      ]
     },
     {
       "name": "aws-agentic-ai",
