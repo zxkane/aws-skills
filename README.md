@@ -1,20 +1,19 @@
 # AWS Skills for Claude Code
 
-Claude Code plugins for AWS development with specialized knowledge and MCP server integrations.
+Claude Code plugins for AWS development with specialized knowledge and MCP server integrations, including CDK, serverless architecture, cost optimization, and Bedrock AgentCore for AI agent deployment.
 
 ## Plugins
 
 ### 1. AWS CDK Plugin
 
-AWS CDK development skill with integrated MCP servers for infrastructure as code.
+AWS CDK development skill with integrated MCP server for infrastructure as code.
 
 **Features**:
 - AWS CDK best practices and patterns
 - Pre-deployment validation script
 - Comprehensive CDK patterns reference
 
-**Integrated MCP Servers**:
-- AWS Documentation MCP (HTTP)
+**Integrated MCP Server**:
 - AWS CDK MCP (stdio)
 
 ### 2. AWS Cost & Operations Plugin
@@ -33,7 +32,7 @@ Cost optimization, monitoring, and operational excellence with 3 integrated MCP 
 
 ### 3. AWS Serverless & Event-Driven Architecture Plugin
 
-Serverless and event-driven architecture patterns based on Well-Architected Framework with 2 integrated MCP servers.
+Serverless and event-driven architecture patterns based on Well-Architected Framework.
 
 **Features**:
 - Well-Architected serverless design principles
@@ -42,9 +41,18 @@ Serverless and event-driven architecture patterns based on Well-Architected Fram
 - Saga patterns for distributed transactions
 - Event sourcing patterns
 
-**Integrated MCP Servers**:
-- AWS Documentation MCP (HTTP)
-- AWS Serverless MCP (SAM CLI)
+### 4. AWS Agentic AI Plugin
+
+AWS Bedrock AgentCore comprehensive expert for deploying and managing AI agents.
+
+**Features**:
+- Gateway service for converting REST APIs to MCP tools
+- Runtime service for deploying and scaling agents
+- Memory service for managing conversation state
+- Identity service for credential and access management
+- Code Interpreter for secure code execution
+- Browser service for web automation
+- Observability for tracing and monitoring
 
 ## Installation
 
@@ -60,6 +68,7 @@ Install plugins individually:
 /plugin install aws-cdk@aws-skills
 /plugin install aws-cost-ops@aws-skills
 /plugin install serverless-eda@aws-skills
+/plugin install aws-agentic-ai@aws-skills
 ```
 
 ## Core CDK Principles
@@ -178,6 +187,26 @@ Orchestrate complex workflows:
 Implement a saga pattern for booking flights, hotels, and car rentals with compensation logic
 ```
 
+### AI Agent Development
+
+Deploy AI agents with Bedrock AgentCore:
+
+```
+Deploy a REST API as an MCP tool using AgentCore Gateway
+```
+
+Manage agent memory:
+
+```
+Set up conversation memory for my AI agent with DynamoDB backend
+```
+
+Monitor agent performance:
+
+```
+Configure observability for my AgentCore runtime with CloudWatch dashboards
+```
+
 ## Structure
 
 ```
@@ -185,6 +214,10 @@ Implement a saga pattern for booking flights, hotels, and car rentals with compe
 ├── .claude-plugin/
 │   └── marketplace.json              # Plugin marketplace configuration
 ├── skills/
+│   ├── aws-agentic-ai/               # Bedrock AgentCore skill
+│   │   ├── SKILL.md
+│   │   ├── services/                 # Service-specific docs
+│   │   └── cross-service/            # Cross-service patterns
 │   ├── aws-cdk-development/          # CDK development skill
 │   │   ├── SKILL.md
 │   │   ├── references/
@@ -215,6 +248,7 @@ Examples: `awsdocs` (AWS docs), `cdk` (CDK), `cw` (CloudWatch), `sfn` (Step Func
 - [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills)
 - [AWS MCP Servers](https://awslabs.github.io/mcp/)
 - [AWS CDK](https://aws.amazon.com/cdk/)
+- [Amazon Bedrock AgentCore](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html)
 - [MCP Protocol](https://modelcontextprotocol.io/)
 
 ## License
