@@ -213,27 +213,35 @@ Configure observability for my AgentCore runtime with CloudWatch dashboards
 .
 ├── .claude-plugin/
 │   └── marketplace.json              # Plugin marketplace configuration
-├── skills/
-│   ├── aws-agentic-ai/               # Bedrock AgentCore skill
-│   │   ├── SKILL.md
-│   │   ├── services/                 # Service-specific docs
-│   │   └── cross-service/            # Cross-service patterns
-│   ├── aws-cdk-development/          # CDK development skill
-│   │   ├── SKILL.md
-│   │   ├── references/
-│   │   │   └── cdk-patterns.md
-│   │   └── scripts/
-│   │       └── validate-stack.sh
-│   ├── aws-cost-operations/          # Cost & operations skill
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       ├── operations-patterns.md
-│   │       └── cloudwatch-alarms.md
-│   └── aws-serverless-eda/           # Serverless & EDA skill
-│       ├── SKILL.md
-│       └── references/
-│           ├── serverless-patterns.md
-│           └── eda-patterns.md
+├── plugins/                          # Each plugin has isolated skills
+│   ├── aws-cdk/
+│   │   └── skills/
+│   │       └── aws-cdk-development/  # CDK development skill
+│   │           ├── SKILL.md
+│   │           ├── references/
+│   │           │   └── cdk-patterns.md
+│   │           └── scripts/
+│   │               └── validate-stack.sh
+│   ├── aws-cost-ops/
+│   │   └── skills/
+│   │       └── aws-cost-operations/  # Cost & operations skill
+│   │           ├── SKILL.md
+│   │           └── references/
+│   │               ├── operations-patterns.md
+│   │               └── cloudwatch-alarms.md
+│   ├── serverless-eda/
+│   │   └── skills/
+│   │       └── aws-serverless-eda/   # Serverless & EDA skill
+│   │           ├── SKILL.md
+│   │           └── references/
+│   │               ├── serverless-patterns.md
+│   │               └── eda-patterns.md
+│   └── aws-agentic-ai/
+│       └── skills/
+│           └── aws-agentic-ai/       # Bedrock AgentCore skill
+│               ├── SKILL.md
+│               ├── services/         # Service-specific docs
+│               └── cross-service/    # Cross-service patterns
 └── README.md
 ```
 

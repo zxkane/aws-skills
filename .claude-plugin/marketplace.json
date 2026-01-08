@@ -22,7 +22,7 @@
       "license": "MIT",
       "keywords": ["aws", "cdk", "lambda", "infrastructure", "cloud", "skills"],
       "category": "development",
-      "source": "./",
+      "source": "./plugins/aws-cdk",
       "strict": false,
       "skills": [
         "./skills/aws-cdk-development"
@@ -53,7 +53,7 @@
       "license": "MIT",
       "keywords": ["aws", "cost", "billing", "monitoring", "cloudwatch", "operations", "observability"],
       "category": "operations",
-      "source": "./",
+      "source": "./plugins/aws-cost-ops",
       "strict": false,
       "skills": [
         "./skills/aws-cost-operations"
@@ -104,7 +104,7 @@
       "license": "MIT",
       "keywords": ["aws", "serverless", "lambda", "event-driven", "eda", "step-functions", "eventbridge", "sqs", "sns"],
       "category": "development",
-      "source": "./",
+      "source": "./plugins/serverless-eda",
       "strict": false,
       "skills": [
         "./skills/aws-serverless-eda"
@@ -123,7 +123,7 @@
       "license": "MIT",
       "keywords": ["aws", "bedrock", "agentcore", "ai-agents", "mcp", "gateway", "runtime", "memory", "identity"],
       "category": "development",
-      "source": "./",
+      "source": "./plugins/aws-agentic-ai",
       "strict": false,
       "skills": [
         "./skills/aws-agentic-ai"
