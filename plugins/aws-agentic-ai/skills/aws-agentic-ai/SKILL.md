@@ -4,6 +4,23 @@ aliases:
   - bedrock-agentcore
   - aws-agentic-ai
 description: AWS Bedrock AgentCore comprehensive expert for deploying and managing all AgentCore services. Use when working with Gateway, Runtime, Memory, Identity, or any AgentCore component. Covers MCP target deployment, credential management, schema optimization, runtime configuration, memory management, and identity services.
+context: fork
+model: sonnet
+allowed-tools:
+  - mcp__aws-mcp__*
+  - mcp__awsdocs__*
+  - Bash(aws bedrock-agentcore-control *)
+  - Bash(aws bedrock-agentcore-runtime *)
+  - Bash(aws bedrock *)
+  - Bash(aws s3 cp *)
+  - Bash(aws s3 ls *)
+  - Bash(aws secretsmanager *)
+  - Bash(aws sts get-caller-identity)
+hooks:
+  PreToolUse:
+    - matcher: Bash(aws bedrock-agentcore-control create-*)
+      command: aws sts get-caller-identity --query Account --output text
+      once: true
 ---
 
 # AWS Bedrock AgentCore

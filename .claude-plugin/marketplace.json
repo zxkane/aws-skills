@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "AWS development skills for Claude Code including CDK, serverless architecture, cost optimization, and Bedrock AgentCore for AI agent deployment",
-    "version": "2.0.0"
+    "version": "2.1.0"
   },
   "plugins": [
     {
       "name": "aws-cdk",
       "description": "Comprehensive AWS development skills including CDK best practices, Lambda development workflows, and AWS documentation search capabilities",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Kane Zhu",
         "email": "me@kane.mx"
@@ -43,7 +43,7 @@
     {
       "name": "aws-cost-ops",
       "description": "AWS cost optimization, monitoring, and operational excellence with integrated MCP servers for billing, cost analysis, observability, and security assessment",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Kane Zhu",
         "email": "me@kane.mx"
@@ -94,7 +94,7 @@
     {
       "name": "serverless-eda",
       "description": "AWS serverless and event-driven architecture best practices based on Well-Architected Framework with MCP servers for SAM, Lambda, Step Functions, and messaging",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Kane Zhu",
         "email": "me@kane.mx"
@@ -113,7 +113,7 @@
     {
       "name": "aws-agentic-ai",
       "description": "AWS Bedrock AgentCore comprehensive expert for deploying and managing all AgentCore services including Gateway, Runtime, Memory, Identity, Code Interpreter, Browser, and Observability",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Kane Zhu",
         "email": "me@kane.mx"

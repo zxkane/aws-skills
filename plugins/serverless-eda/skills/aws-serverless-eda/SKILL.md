@@ -1,6 +1,28 @@
 ---
 name: aws-serverless-eda
 description: AWS serverless and event-driven architecture expert based on Well-Architected Framework. Use when building serverless APIs, Lambda functions, REST APIs, microservices, or async workflows. Covers Lambda with TypeScript/Python, API Gateway (REST/HTTP), DynamoDB, Step Functions, EventBridge, SQS, SNS, and serverless patterns. Essential when user mentions serverless, Lambda, API Gateway, event-driven, async processing, queues, pub/sub, or wants to build scalable serverless applications with AWS best practices.
+context: fork
+skills:
+  - aws-cdk-development
+allowed-tools:
+  - mcp__aws-mcp__*
+  - mcp__awsdocs__*
+  - mcp__cdk__*
+  - Bash(sam *)
+  - Bash(aws lambda *)
+  - Bash(aws apigateway *)
+  - Bash(aws apigatewayv2 *)
+  - Bash(aws dynamodb *)
+  - Bash(aws stepfunctions *)
+  - Bash(aws events *)
+  - Bash(aws sqs *)
+  - Bash(aws sns *)
+  - Bash(aws sts get-caller-identity)
+hooks:
+  PreToolUse:
+    - matcher: Bash(sam deploy*)
+      command: aws sts get-caller-identity --query Account --output text
+      once: true
 ---
 
 # AWS Serverless & Event-Driven Architecture

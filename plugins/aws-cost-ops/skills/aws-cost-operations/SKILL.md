@@ -1,6 +1,23 @@
 ---
 name: aws-cost-operations
 description: This skill provides AWS cost optimization, monitoring, and operational best practices with integrated MCP servers for billing analysis, cost estimation, observability, and security assessment.
+allowed-tools:
+  - mcp__pricing__*
+  - mcp__costexp__*
+  - mcp__cw__*
+  - mcp__aws-mcp__*
+  - mcp__awsdocs__*
+  - Bash(aws ce *)
+  - Bash(aws cloudwatch *)
+  - Bash(aws logs *)
+  - Bash(aws budgets *)
+  - Bash(aws cloudtrail *)
+  - Bash(aws sts get-caller-identity)
+hooks:
+  PreToolUse:
+    - matcher: Bash(aws ce *)
+      command: aws sts get-caller-identity --query Account --output text
+      once: true
 ---
 
 # AWS Cost & Operations
