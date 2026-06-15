@@ -82,7 +82,7 @@ Install plugins individually:
 /plugin install aws-common@aws-skills
 
 # Then install the plugins you need
-/plugin install aws-cdk@aws-skills
+/plugin install aws-iac@aws-skills
 /plugin install aws-cost-ops@aws-skills
 /plugin install serverless-eda@aws-skills
 /plugin install aws-agentic-ai@aws-skills
@@ -95,6 +95,9 @@ Install a single skill directly from the repository using [skills.sh](https://sk
 ```bash
 # AWS CDK development skill
 npx skills add https://github.com/zxkane/aws-skills --skill aws-cdk-development
+
+# AWS SST (Ion) infrastructure-as-code skill
+npx skills add https://github.com/zxkane/aws-skills --skill aws-sst-development
 
 # AWS cost & operations skill
 npx skills add https://github.com/zxkane/aws-skills --skill aws-cost-operations
@@ -258,14 +261,20 @@ Configure observability for my AgentCore runtime with CloudWatch dashboards
 │   │   └── skills/
 │   │       └── aws-mcp-setup/        # Shared MCP configuration skill
 │   │           └── SKILL.md
-│   ├── aws-cdk/
+│   ├── aws-iac/                      # Infrastructure as code (CDK + SST)
 │   │   └── skills/
-│   │       └── aws-cdk-development/  # CDK development skill
+│   │       ├── aws-cdk-development/  # CDK development skill
+│   │       │   ├── SKILL.md
+│   │       │   ├── references/
+│   │       │   │   └── cdk-patterns.md
+│   │       │   └── scripts/
+│   │       │       └── validate-stack.sh
+│   │       └── aws-sst-development/  # SST v4 (Ion) IaC skill
 │   │           ├── SKILL.md
-│   │           ├── references/
-│   │           │   └── cdk-patterns.md
-│   │           └── scripts/
-│   │               └── validate-stack.sh
+│   │           └── references/
+│   │               ├── authoring.md
+│   │               ├── deploy-and-troubleshoot.md
+│   │               └── testing.md
 │   ├── aws-cost-ops/
 │   │   └── skills/
 │   │       └── aws-cost-operations/  # Cost & operations skill

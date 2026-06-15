@@ -101,3 +101,8 @@ Desktop.ini
 # Claude Code
 .claude/settings.local.json
 CLAUDE.local.md
+# Git worktrees (autonomous-dev workflow)
+.worktrees/
+
+# Skill-creator eval/optimization workspaces (local artifacts, not shipped)
+*-workspace/

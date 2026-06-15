@@ -12,7 +12,7 @@ This is an AWS skills plugin marketplace for Claude Code. It contains 5 plugins 
 .claude-plugin/marketplace.json    # Plugin marketplace definition (versions, MCP servers)
 plugins/
 ├── aws-common/                    # Shared skills (aws-mcp-setup) - dependency for all others
-├── aws-cdk/                       # CDK infrastructure as code
+├── aws-iac/                       # Infrastructure as code (CDK + SST)
 ├── aws-cost-ops/                  # Cost optimization & monitoring
 ├── serverless-eda/                # Serverless & event-driven patterns
 └── aws-agentic-ai/                # Bedrock AgentCore for AI agents
@@ -47,7 +47,8 @@ claude -p "Read the frontmatter of aws-cdk-development skill"
 ```bash
 cd .claude && rm -rf skills && mkdir skills
 ln -s ../../plugins/aws-common/skills/aws-mcp-setup skills/
-ln -s ../../plugins/aws-cdk/skills/aws-cdk-development skills/
+ln -s ../../plugins/aws-iac/skills/aws-cdk-development skills/
+ln -s ../../plugins/aws-iac/skills/aws-sst-development skills/
 ln -s ../../plugins/serverless-eda/skills/aws-serverless-eda skills/
 ln -s ../../plugins/aws-agentic-ai/skills/aws-agentic-ai skills/
 ln -s ../../plugins/aws-cost-ops/skills/aws-cost-operations skills/
