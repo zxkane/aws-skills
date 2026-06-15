@@ -5,8 +5,8 @@
     "email": "me@kane.mx"
   },
   "metadata": {
-    "description": "AWS development skills for Claude Code including CDK, serverless architecture, cost optimization, and Bedrock AgentCore for AI agent deployment",
-    "version": "2.4.0"
+    "description": "AWS development skills for Claude Code including CDK and SST infrastructure as code, serverless architecture, cost optimization, and Bedrock AgentCore for AI agent deployment",
+    "version": "2.5.0"
   },
   "plugins": [
     {
@@ -30,8 +30,8 @@
     },
     {
       "name": "aws-cdk",
-      "description": "Comprehensive AWS development skills including CDK best practices, Lambda development workflows, and AWS documentation search capabilities",
-      "version": "1.2.1",
+      "description": "AWS infrastructure-as-code skills covering both CDK (CloudFormation) and SST v4 (Pulumi/Ion): CDK best practices and Lambda workflows, plus SST resource authoring, linking, IAM scoping, deploy troubleshooting, and migration patterns",
+      "version": "1.3.0",
       "author": {
         "name": "Kane Zhu",
         "email": "me@kane.mx"
@@ -39,12 +39,13 @@
       "homepage": "https://github.com/zxkane/aws-skills",
       "repository": "https://github.com/zxkane/aws-skills",
       "license": "MIT",
-      "keywords": ["aws", "cdk", "lambda", "infrastructure", "cloud", "skills"],
+      "keywords": ["aws", "cdk", "sst", "ion", "pulumi", "lambda", "infrastructure", "iac", "cloud", "skills"],
       "category": "development",
       "source": "./plugins/aws-cdk",
       "strict": false,
       "skills": [
-        "./skills/aws-cdk-development"
+        "./skills/aws-cdk-development",
+        "./skills/aws-sst-development"
       ]
     },
     {
