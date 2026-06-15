@@ -82,7 +82,7 @@ Install plugins individually:
 /plugin install aws-common@aws-skills
 
 # Then install the plugins you need
-/plugin install aws-cdk@aws-skills
+/plugin install aws-iac@aws-skills
 /plugin install aws-cost-ops@aws-skills
 /plugin install serverless-eda@aws-skills
 /plugin install aws-agentic-ai@aws-skills
@@ -261,7 +261,7 @@ Configure observability for my AgentCore runtime with CloudWatch dashboards
 │   │   └── skills/
 │   │       └── aws-mcp-setup/        # Shared MCP configuration skill
 │   │           └── SKILL.md
-│   ├── aws-cdk/
+│   ├── aws-iac/                      # Infrastructure as code (CDK + SST)
 │   │   └── skills/
 │   │       ├── aws-cdk-development/  # CDK development skill
 │   │       │   ├── SKILL.md

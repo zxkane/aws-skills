@@ -29,7 +29,7 @@
       ]
     },
     {
-      "name": "aws-cdk",
+      "name": "aws-iac",
       "description": "AWS infrastructure-as-code skills covering both CDK (CloudFormation) and SST v4 (Pulumi/Ion): CDK best practices and Lambda workflows, plus SST resource authoring, linking, IAM scoping, deploy troubleshooting, and migration patterns",
       "version": "1.3.0",
       "author": {
@@ -41,7 +41,7 @@
       "license": "MIT",
       "keywords": ["aws", "cdk", "sst", "ion", "pulumi", "lambda", "infrastructure", "iac", "cloud", "skills"],
       "category": "development",
-      "source": "./plugins/aws-cdk",
+      "source": "./plugins/aws-iac",
       "strict": false,
       "skills": [
         "./skills/aws-cdk-development",
