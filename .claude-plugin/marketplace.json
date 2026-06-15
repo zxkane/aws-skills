@@ -45,19 +45,7 @@
       "strict": false,
       "skills": [
         "./skills/aws-cdk-development"
-      ],
-      "mcpServers": {
-        "cdk": {
-          "type": "stdio",
-          "command": "uvx",
-          "args": [
-            "awslabs.cdk-mcp-server@latest"
-          ],
-          "env": {
-            "FASTMCP_LOG_LEVEL": "ERROR"
-          }
-        }
-      }
+      ]
     },
     {
       "name": "aws-cost-ops",
@@ -88,11 +76,11 @@
             "FASTMCP_LOG_LEVEL": "ERROR"
           }
         },
-        "costexp": {
+        "billing": {
           "type": "stdio",
           "command": "uvx",
           "args": [
-            "awslabs.cost-explorer-mcp-server@latest"
+            "awslabs.billing-cost-management-mcp-server@latest"
           ],
           "env": {
             "FASTMCP_LOG_LEVEL": "ERROR"

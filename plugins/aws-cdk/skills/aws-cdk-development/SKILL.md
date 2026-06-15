@@ -28,19 +28,17 @@ This skill provides comprehensive guidance for developing AWS infrastructure usi
 
 Always verify AWS facts using MCP tools (`mcp__aws-mcp__*` or `mcp__*awsdocs*__*`) before answering. The `aws-mcp-setup` dependency is auto-loaded — if MCP tools are unavailable, guide the user through that skill's setup flow.
 
-## Integrated MCP Servers
+## CDK-Specific MCP Guidance
 
-This skill includes the CDK MCP server automatically configured with the plugin:
+AWS Labs replaced the dedicated CDK MCP server (`awslabs.cdk-mcp-server`) with the broader `awslabs.aws-iac-mcp-server`, which covers CDK alongside CloudFormation and other AWS infrastructure-as-code workflows.
 
-### AWS CDK MCP Server
-**When to use**: For CDK-specific guidance and utilities
-- Get CDK construct recommendations
-- Retrieve CDK best practices
-- Access CDK pattern suggestions
-- Validate CDK configurations
-- Get help with CDK-specific APIs
+For CDK construct lookups, best-practice recommendations, and pattern guidance, install `awslabs.aws-iac-mcp-server`. It ships in the `deploy-on-aws` plugin from `awslabs/agent-plugins`, or can be registered directly with `claude mcp add aws-iac uvx awslabs.aws-iac-mcp-server@latest`.
 
-**Important**: Leverage this server for CDK construct guidance and advanced CDK operations.
+**When to reach for it**:
+- CDK construct recommendations and API lookups
+- CDK and CloudFormation best-practice patterns
+- Validation of synthesized templates
+- Cross-resource configuration guidance
 
 ## When to Use This Skill
 
