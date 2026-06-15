@@ -48,7 +48,14 @@ def load_marketplace() -> dict | None:
 
 def frontmatter(skill_md: Path) -> dict[str, str]:
     """Parse the leading YAML frontmatter block (name/description only)."""
-    text = skill_md.read_text(encoding="utf-8", errors="replace")
+    try:
+        text = skill_md.read_text(encoding="utf-8", errors="replace")
+    except OSError as e:
+        # Unreadable SKILL.md (missing, permissions, ...) -> report and treat as
+        # empty frontmatter, so the name/description checks flag it loudly
+        # instead of crashing the whole run.
+        err(f"{skill_md.relative_to(REPO)}: could not read SKILL.md ({e})")
+        return {}
     m = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
     if not m:
         return {}
@@ -98,7 +105,11 @@ def check_marketplace(data: dict) -> set[Path]:
 def check_all_skill_frontmatter() -> set[Path]:
     """Validate frontmatter of every SKILL.md; return the set found on disk."""
     found: set[Path] = set()
-    for skill_md in (REPO / "plugins").rglob("SKILL.md"):
+    plugins_dir = REPO / "plugins"
+    if not plugins_dir.is_dir():
+        err("plugins/ directory not found")
+        return found
+    for skill_md in plugins_dir.rglob("SKILL.md"):
         found.add(skill_md.resolve())
         fm = frontmatter(skill_md)
         rel = skill_md.relative_to(REPO)
@@ -119,6 +130,16 @@ def check_dev_symlinks() -> None:
             continue
         target = os.readlink(entry)
         resolved = (entry.parent / target).resolve()
+        # A tracked dev symlink should point at an in-repo skill dir. Flag any
+        # that escape the repo (supply-chain hygiene) before the existence check.
+        try:
+            resolved.relative_to(REPO)
+        except ValueError:
+            err(
+                f".claude/skills/{entry.name}: symlink points outside the repo "
+                f"-> {target} (resolves to {resolved})"
+            )
+            continue
         if not resolved.is_dir():
             err(
                 f".claude/skills/{entry.name}: dangling symlink -> {target} "
@@ -150,7 +171,8 @@ def main() -> int:
             print(f"  - {e}")
         return 1
     print("✓ marketplace validation passed")
-    plugin_count = len(data["plugins"]) if data is not None else 0
+    plugins = data.get("plugins") if data is not None else None
+    plugin_count = len(plugins) if isinstance(plugins, list) else 0
     print(f"  plugins: {plugin_count}")
     print(f"  skills:  {len(found)}")
     return 0
